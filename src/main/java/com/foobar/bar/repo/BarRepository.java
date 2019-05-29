@@ -8,6 +8,6 @@ import com.foobar.bar.domain.Bar;
 @Repository
 public interface BarRepository extends JpaRepository<Bar, Long> {
 
-  Bar findById(Long id);
+	 Bar findById(Long id); 
 
 }

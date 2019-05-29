@@ -34,6 +34,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka-clients</artifactId>
+		    <version>2.2.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka-streams</artifactId>
+		    <version>0.10.0.0</version>
+		</dependency>
 
 		<!-- PostgreSQL JDBC driver -->
 		<dependency>
@@ -41,91 +55,63 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
-		<!-- TEST DEPENDENCIES -->
-		<!-- Spring Boot Starter Test -->
+		
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.6.1</version>
+			<scope>compile</scope>
 		</dependency>
-
-		<!-- Spock (A Groovy based testframework running on top of the JUnit runner)  -->
-		<!-- https://mvnrepository.com/artifact/org.spockframework/spock-core -->
 		<dependency>
-			<groupId>org.spockframework</groupId>
-			<artifactId>spock-core</artifactId>
-			<version>1.1-groovy-2.4</version>
-			<scope>test</scope>
+		    <groupId>com.itextpdf</groupId>
+		    <artifactId>itextpdf</artifactId>
+		    <version>5.5.10</version>
 		</dependency>
-
-		<!-- Spock-Spring: Use the Spring TestContext framework together with Spock for Integration Tests -->
-		<!-- https://mvnrepository.com/artifact/org.spockframework/spock-spring -->
 		<dependency>
-			<groupId>org.spockframework</groupId>
-			<artifactId>spock-spring</artifactId>
-			<version>1.1-groovy-2.4</version>
-			<scope>test</scope>
+		    <groupId>org.apache.pdfbox</groupId>
+		    <artifactId>pdfbox</artifactId>
+		    <version>2.0.4</version>
 		</dependency>
-
-		<!-- Specific Groovy version for using Spock (needed by the Maven Plugins) -->
-		<!-- Use a specific Groovy version rather than the one specified by spock-core -->
 		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>2.4.10</version> <!-- 2.4.11 didn't work for me -->
-			<scope>test</scope>
+		    <groupId>org.bouncycastle</groupId>
+		    <artifactId>bcprov-jdk15on</artifactId>
+		    <version>1.56</version>
 		</dependency>
-
-		<!-- H2 In-Memory Database JDBC driver for tests -->
+		
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.195</version>
-			<scope>test</scope>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.6.1</version>
+			<scope>compile</scope>
 		</dependency>
-	</dependencies>
+</dependencies>
 
 	<build>
 		<plugins>
-			<!-- Spring Boot Maven Plugin -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<!-- Spock related Plugins -->
-			<!-- Mandatory plugins for using Spock -->
-			<plugin>
-				<!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
-				visit https://github.com/groovy/GMavenPlus/wiki -->
-				<groupId>org.codehaus.gmavenplus</groupId>
-				<artifactId>gmavenplus-plugin</artifactId>
-				<version>1.5</version>
+				<version>1.5.3.RELEASE</version>
 				<executions>
 					<execution>
 						<goals>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
+							<goal>repackage</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-			<!-- Optional plugins for using Spock -->
-			<!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.20</version>
-				<configuration>
-					<useFile>false</useFile>
-					<includes>
-						<include>**/*Spec.java</include>
-					</includes>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-
-
+		<repositories>
+		<repository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
